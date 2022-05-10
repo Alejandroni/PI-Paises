@@ -6,7 +6,7 @@ const {
   DB_USER, DB_PASSWORD, DB_HOST,
 } = process.env;
 
-const sequelize = new Sequelize(`postgres://${DB_USER}:${DB_PASSWORD}@${DB_HOST}/countries`, {
+const sequelize = new Sequelize(`postgres://postgres:deliverance833@localhost/countries`, {
   logging: false, // set to console.log to see the raw SQL queries
   native: false, // lets Sequelize know we can use pg-native for ~30% more speed
 });
@@ -34,7 +34,7 @@ const { Country, Activity } = sequelize.models;
 
 // Aca vendrian las relaciones
 // Product.hasMany(Reviews);
-Country.belongsToMany(Activity,{through:"country_activity"}); 
+Country.belongsToMany(Activity,{through:"country_activity"});
 Activity.belongsToMany(Country,{through:"country_activity"});
 
 module.exports = {
