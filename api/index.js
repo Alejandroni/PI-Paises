@@ -19,9 +19,29 @@
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
 const { conn } = require('./src/db.js');
+const axios = require("axios");  
+
 
 // Syncing all the models at once.
 conn.sync({ force: true }).then(() => {
+  //Traer paises
+const getApiInfo = async () => { //traer la info
+const urlApi = await axios.get('https://restcountries.com/v3/all'); //la url..obvio
+const apiInfo = await urlApi.data.map(el => { //mapea los datos de la info porque llega muy feo y que llegue lo que necesito
+return{
+  id: el.tid,
+  name: el.name,
+  flag: el.flag,
+  continent: el.region,
+  capital: el.capital,
+  subregion: el.subregion,
+  area: el.area,
+  population: el.population,
+};
+});
+return apiInfo; //devolver lo que quiero que me traiga
+};
+
   server.listen(3001, () => {
     console.log('%s listening at 3001'); // eslint-disable-line no-console
   });
