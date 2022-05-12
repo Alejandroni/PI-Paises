@@ -14,7 +14,7 @@ const router = Router();
 // Ejemplo: router.use('/auth', authRouter);
 //middlew
 
-router.use('/paises',paises); //api pasies
-router.use('/actividades.js',actividades )   //api/actividades;
+router.use('/paises',paises); 
+router.use('/actividades.js',actividades)   
 
 module.exports = router;
