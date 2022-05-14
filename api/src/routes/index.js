@@ -15,6 +15,6 @@ const router = Router();
 //middlew
 
 router.use('/paises',paises); 
-router.use('/actividades.js',actividades)   
+router.use('/actividades',actividades)   
 
 module.exports = router;
