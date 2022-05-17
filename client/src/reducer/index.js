@@ -1,16 +1,18 @@
 //estado inicial antes de importar acciones
 const initialState = {
     countries: [],
-    activities: []
+    allContinents: []
+   // activities: []
 }
 
 function rootReducer(state = initialState, action){ //traer paises
-// eslint-disable-next-line default-case
+
 switch(action.type){
     case 'GET_COUNTRIES':
     return{  //siempre devuelve todo el estado y en el estado countries pasarle todo lo que mande la action getcountries
         ...state,
-        countries:action.payload 
+        countries:action.payload ,
+        allContinents:action.payload
     };
 /*
     case 'GET_ACTIVITIES':
@@ -19,6 +21,8 @@ switch(action.type){
           activities: action.payload,
           allActivities: action.payload,
         };*/
+        default:
+    return state;
 }
 
 }

@@ -4,16 +4,19 @@ import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 
 function App() {
+  console.log("algo")
   return (
-    <BrowserRouter>
+    
     <div className="App">
+  
       <Routes>
-<Route exact path='/' component={LandingPage} />
-<Route exact path='/home' component={Home} />
+  <Route path='/' element={<LandingPage/>} /> 
+ <Route path='/home' element={<Home/>} />
       </Routes>
      
+      <h1>ALGO</h1>
     </div>
-    </BrowserRouter>
+   
   );
 }
 

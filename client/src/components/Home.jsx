@@ -1,4 +1,4 @@
-import React, { useEffect, /*useState*/ } from "react";
+import React, { Fragment, useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux"
 import { getCountries, getActivities } from "../actions";
 import {Link} from "react-router-dom"
@@ -9,14 +9,14 @@ export default function Home(){
    //traer todco lo que esta en el estado de countries
     const allCountries = useSelector((state)=> state.countries) //otra version, mapStateToProps
     //const allActivities = useSelector((state)=> state.activities)
-    
-    
+    const [currentPage , setCurrentPage] = /*estado local*/useState(1) //un estado con la pagina actual y otra que me setee la pag actual
+    const[countriesPerPage, setCountriesPerPage] = useState()
     
     
     //traer del estado los paises cuando el componente se monta
     useEffect(()=>{
     dispatch(getCountries()) //despachar acciones
-    dispatch(getActivities())
+    //dispatch(getActivities())
     },[dispatch] /*de lo que depende el componente*/)
     
     
@@ -69,20 +69,27 @@ dispatch(getCountries())
                                                                   {/**personajes */}
             <option defaultValue value="ALL">Actividades</option>
         </select>
-        {
-            //vamos a recorrer todo
-            //pregunto si hay paises 
-           // eslint-disable-next-line array-callback-return
-           allCountries && allCountries.map(el=>{
-               <Card   
-               id={el.id}
-               name={el.name}
-               img={el.img}
-              // continent={el.continent}
-              // activities={el.activities}
-               />
-           })
-        }
+        
+        {allCountries?.map((el) => { //Existe? pues entonces mapea
+            return (
+              <div >
+                {/* <Link
+                to={`/home/${el.id}`}
+                onClick={() => dispatch(detallePais(el.id))}
+              > */}
+                <Card
+                  id={el.id}
+                  name={el.name}
+                  img={el.img}
+                  continent={el.continent}
+                  activities={el.activities}
+                  key={el.id}
+                />
+                {/* </Link> */}
+              </div>
+            );
+          })}
+        
     </div>
 </div>
 </nav>

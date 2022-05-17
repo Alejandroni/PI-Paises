@@ -1,4 +1,4 @@
-import axios from "axios";
+import axios from 'axios';
 //traer personajes
 export function getCountries(){
     return async function(dispatch){ //ruta del back que trae los paises
