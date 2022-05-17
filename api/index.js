@@ -18,7 +18,7 @@
 //                       `=---='
 //     ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 const server = require('./src/app.js');
-const { conn, Country } = require('./src/db.js');
+const { conn, Countries } = require('./src/db.js');
 const axios = require("axios");  
 
 
@@ -31,7 +31,7 @@ const urlApi = await axios.get('https://restcountries.com/v3/all'); //la url..ob
 let apiInfo = urlApi.data.map((el) => { //mapea los datos de la info porque llega muy feo y que llegue lo que necesito
 return{
   id: el.cca3,
-  name: el.name.official,
+  name: el.name.common,
   img: el.flags[1],
   continent: el.continents[0],
   capital: el.capital ? el.capital[0] : "No tengo Capital",
@@ -41,7 +41,7 @@ return{
 };
 
 });
-await Country.bulkCreate(apiInfo);
+await Countries.bulkCreate(apiInfo);
 //return apiInfo; //devolver lo que quiero que me traiga
 //};
 /*
