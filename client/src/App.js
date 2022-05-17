@@ -1,10 +1,17 @@
 import './App.css';
-import {BrowserRouter, Route, Switch} from "react-router-dom" //swtich para setear rutas
+import {BrowserRouter, Route, Routes} from 'react-router-dom' //swtich para setear rutas
+import LandingPage from './components/LandingPage';
+import Home from './components/Home';
+
 function App() {
   return (
     <BrowserRouter>
     <div className="App">
-      <h1>Henry Countries</h1>
+      <Routes>
+<Route exact path='/' component={LandingPage} />
+<Route exact path='/home' component={Home} />
+      </Routes>
+     
     </div>
     </BrowserRouter>
   );
