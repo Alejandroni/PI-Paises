@@ -20,3 +20,13 @@ export function getActivities(){
         })
     }
 }
+export function filterContinent(payload){ //payload === value del input
+    console.log(payload)
+    return{
+        type: 'FILTER_BY_CONTINENT',
+        payload
+    }
+}
+export function filterActivities(payload){ //
+
+}

@@ -1,25 +1,37 @@
-import React, { Fragment, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux"
-import { getCountries, getActivities } from "../actions";
+import { getCountries,filterContinent, getActivities } from "../actions";
 import {Link} from "react-router-dom"
 import Card from "./Card"
+import Paginado from "./Paginado";
 
 export default function Home(){
     const dispatch = useDispatch() //utilizar la constante y despachar acciones
    //traer todco lo que esta en el estado de countries
     const allCountries = useSelector((state)=> state.countries) //otra version, mapStateToProps
     //const allActivities = useSelector((state)=> state.activities)
-    const [currentPage , setCurrentPage] = /*estado local*/useState(1) //un estado con la pagina actual y otra que me setee la pag actual
-    const[countriesPerPage, setCountriesPerPage] = useState()
+    //----------------------------------------------------PAGINADO
+    const [currentPage , setCurrentPage] = /*estado local*/useState(1) //un estado con la pagina actual, la 1
+    const[countriesPerPage, setCountriesPerPage] = useState(10) //quiero 10 por pagina
+    const indexOflastCountry = currentPage * countriesPerPage //index = 10
+    const indexOflFirstCountry = indexOflastCountry - countriesPerPage //0
+    const [pageNumberLimit] = useState(9);
     
+    const currentCountry = allCountries.slice(indexOflFirstCountry, indexOflastCountry)//agarrar arreglo de todo pero solo toma indice del primero y el ultimo  //cortar el arreglo y esa porcion son los paises que estan en la pagina actual/cada pagina
+    const paginado = (pageNumber) =>{ //ayudar al renderizado
+        setCurrentPage(Number(pageNumber.target.id))
+    }
     
+    //-------------------------------------------------------------
     //traer del estado los paises cuando el componente se monta
     useEffect(()=>{
     dispatch(getCountries()) //despachar acciones
     //dispatch(getActivities())
     },[dispatch] /*de lo que depende el componente*/)
     
-    
+    function handleFilterContinent(e){
+dispatch(filterContinent(e.target.value))
+    }
     function handleClick(e){//pasar un evento al boton para resetear
 e.preventDefault();
 dispatch(getCountries())
@@ -56,27 +68,33 @@ dispatch(getCountries())
                 Descendente 
             </option>
         </select>
-        <select>{/*status*/}
-              <option value="All">Continentes</option>
-              <option value="Americas">Americas</option>
+        <select onChange={(e) => handleFilterContinent(e)}> CONTINENTES
+              <option value="All" >Buscar Continente</option> 
+              <option value="North America">America del Norte</option>
+              <option value="South America">America del Sur</option>
               <option value="Asia">Asia</option>
               <option value="Europe">Europa</option>
               <option value="Africa">Africa</option>
               <option value="Oceania">Oceania</option>
-              <option value="Antartida">Antártida</option>
+              <option value="Antartida">Antartida</option>
         </select>
         <select>
                                                                   {/**personajes */}
             <option defaultValue value="ALL">Actividades</option>
         </select>
-        
-        {allCountries?.map((el) => { //Existe? pues entonces mapea
+        <Paginado
+        countriesPerPage={countriesPerPage}
+        allCountries={allCountries.length}
+        paginado={paginado}
+        pageNumberLimit={pageNumberLimit}
+        />
+        {currentCountry?.map((el) => { //Existe? pues entonces mapea
             return (
               <div >
-                {/* <Link
+                 <Link
                 to={`/home/${el.id}`}
-                onClick={() => dispatch(detallePais(el.id))}
-              > */}
+              
+              > 
                 <Card
                   id={el.id}
                   name={el.name}
@@ -85,7 +103,7 @@ dispatch(getCountries())
                   activities={el.activities}
                   key={el.id}
                 />
-                {/* </Link> */}
+                 </Link> 
               </div>
             );
           })}

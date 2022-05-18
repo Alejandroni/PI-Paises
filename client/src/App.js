@@ -1,5 +1,5 @@
 import './App.css';
-import {BrowserRouter, Route, Routes} from 'react-router-dom' //swtich para setear rutas
+import {Route, Routes} from 'react-router-dom' //swtich para setear rutas
 import LandingPage from './components/LandingPage';
 import Home from './components/Home';
 

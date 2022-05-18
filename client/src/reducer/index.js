@@ -1,7 +1,7 @@
 //estado inicial antes de importar acciones
 const initialState = {
     countries: [],
-    allContinents: []
+    allContinents: [] //copia de arreglo de paises para que no se borre despues de filtrar por continentes
    // activities: []
 }
 
@@ -14,6 +14,14 @@ switch(action.type){
         countries:action.payload ,
         allContinents:action.payload
     };
+    case 'FILTER_BY_CONTINENT':
+    const allCountries = state.allContinents; //cuando se filtra, lo tiene todo por reserva para recuperar al momento de volver a filtrar
+    //---------------que me llegue el select--------------------------------------------------cada uno de esos elementos mandados por paylos , filtralos y mandamelos
+    const continentFilter = action.payload === 'ALL' ? allCountries : allCountries.filter((el)=> el.continent === action.payload)
+return{
+    ...state,
+    countries: continentFilter
+}
 /*
     case 'GET_ACTIVITIES':
         return {
