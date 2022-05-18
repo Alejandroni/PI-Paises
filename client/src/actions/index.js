@@ -20,6 +20,20 @@ export function getActivities(){
         })
     }
 }
+export function getPaises(name){
+    return async function(dispatch){
+        try{
+          var queryPaises = await axios.get('http://localhost:3001/paises/nombre?name=' + name);  
+          return dispatch({
+              type: 'GET_QUERY_COUNTRY',
+              payload: queryPaises.data
+          })
+        } catch(err){
+            console.log(err)
+        }
+        
+    }
+}
 export function filterContinent(payload){ //payload === value del input
     console.log(payload)
     return{
@@ -27,6 +41,33 @@ export function filterContinent(payload){ //payload === value del input
         payload
     }
 }
-export function filterActivities(payload){ //
+export function filterActivity(payload){
+    return{
+        type: "FILTER_BY_ACTIVITY", payload
+    }
+}
 
+export function orderByName(payload){
+    return{
+        type: 'ORDER_BY_NAME',
+        payload
+    }
+}
+
+export function orderByPob(payload){
+    return{
+        type: 'ORDER_BY_POB',
+        payload
+    }
+}
+
+export function detallePais(id){
+    return async function(dispatch){
+        var country = await axios.get('http://localhost:3001/paises/'+id);
+        console.log(country)
+        return dispatch({
+            type: 'GET_DETAIL',
+            payload: country.data
+        })
+    }
 }
