@@ -20,7 +20,7 @@ export function getActivities(){
         })
     }
 }
-export function getPaises(name){
+export function getPaises(name){ //name llega por lo que me manden de la busqueda
     return async function(dispatch){
         try{
           var queryPaises = await axios.get('http://localhost:3001/paises/nombre?name=' + name);  

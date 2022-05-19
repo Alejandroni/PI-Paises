@@ -11,20 +11,20 @@ export default function Home(){
     const dispatch = useDispatch() //utilizar la constante y despachar acciones
    //traer todco lo que esta en el estado de countries
     const allCountries = useSelector((state)=> state.countries) //otra version, mapStateToProps
-   const allActivities = useSelector((state)=> state.activities)
+    const allActivities = useSelector((state)=> state.activities)
     //----------------------------------------------------PAGINADO
     const [orden, setOrden] = useState("");
-    const [currentPage , setCurrentPage] = /*estado local*/useState(1) //un estado con la pagina actual, la 1
+    const [currentPage , setCurrentPage] = useState(1) //un estado con la pagina actual, la 1
     const[countriesPerPage, setCountriesPerPage] = useState(10) //quiero 10 por pagina
-    const indexOflastCountry = currentPage * countriesPerPage //index = 10
-    const indexOflFirstCountry = indexOflastCountry - countriesPerPage //0
-    const [pageNumberLimit] = useState(9);
-    const [activity, setActivity] = useState(null) //----------------------------------------------------------????????????????????
-    
+    const indexOflastCountry = currentPage * countriesPerPage //index = 10--------20
+    const indexOflFirstCountry = indexOflastCountry - countriesPerPage //---------- 0---------10
+    const [pageNumberLimit] = useState(13);
     const currentCountry = allCountries.slice(indexOflFirstCountry, indexOflastCountry)//agarrar arreglo de todo pero solo toma indice del primero y el ultimo  //cortar el arreglo y esa porcion son los paises que estan en la pagina actual/cada pagina
     const paginado = (pageNumber) =>{ //ayudar al renderizado
         setCurrentPage(Number(pageNumber.target.id))
     }
+   //--------------------------------------------------------------
+    const [activity, setActivity] = useState(null) //----------------------------------------------------------????????????????????
     
     //-------------------------------------------------------------
     //traer del estado los paises cuando el componente se monta

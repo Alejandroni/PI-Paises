@@ -4,12 +4,13 @@ import { getPaises } from "../actions";
 import style from './SearchBar.module.css'
 
 export default function SearchBar({ onSearch }) {
-  const dispatch = useDispatch();
-  const [name, setName] = useState("");
+  const dispatch = useDispatch();//hooks
+  const [name, setName] = useState("");//corcheteo en string vacio
+ 
 
   function handleInputChange(e) {
     e.preventDefault();
-    setName(e.target.value);
+    setName(e.target.value); //el value del input va a tomar el value del state
   }
 
   function handleSubmit(e) {
@@ -22,7 +23,7 @@ export default function SearchBar({ onSearch }) {
     <div>
       <input
         type="text"
-        placeholder="Search Country"
+        placeholder="Buscar Pais"
         onChange={(e) => handleInputChange(e)}
         value={name}
       />
