@@ -104,6 +104,10 @@ case "GET_ACTIVITY": //--------------------------------------traer Actividades d
               ...state,
               countries: sortedPob,
             };
+            case 'POST_ACTIVITY':
+             return{
+               ...state,
+             }
         default:
     return state;
 }

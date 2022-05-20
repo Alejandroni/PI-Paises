@@ -15,7 +15,7 @@ export default function Home(){
     //----------------------------------------------------PAGINADO
     const [orden, setOrden] = useState("");
     const [currentPage , setCurrentPage] = useState(1) //un estado con la pagina actual, la 1
-    const[countriesPerPage, setCountriesPerPage] = useState(10) //quiero 10 por pagina
+    const [countriesPerPage, setCountriesPerPage] = useState(10) //quiero 10 por pagina
     const indexOflastCountry = currentPage * countriesPerPage //index = 10--------20
     const indexOflFirstCountry = indexOflastCountry - countriesPerPage //---------- 0---------10
     const [pageNumberLimit] = useState(13);
@@ -72,7 +72,7 @@ dispatch(getCountries())
     return(
         <nav>
             <div>
-                    <Link to='/actividades'>
+                    <Link to='/creacion'>
                             <button>
                         Crear Actividades
                         </button> 
@@ -110,7 +110,7 @@ dispatch(getCountries())
               <option value="Europe">Europa</option>
               <option value="Africa">Africa</option>
               <option value="Oceania">Oceania</option>
-              <option value="Antartida">Antartida</option>
+              <option value="Antarctica">Antartida</option>
         </select>
         <select  onChange={(e)=> handleActivity(e)}>
                                                                   {/**personajes */}

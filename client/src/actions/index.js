@@ -71,3 +71,11 @@ export function detallePais(id){
         })
     }
 }
+
+export function postActividad(payload){
+    return async function(){
+        const res = await axios.post('http://localhost:3001/actividades', payload);
+        console.log(res)
+        return res;
+    }
+}
