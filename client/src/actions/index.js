@@ -20,6 +20,30 @@ export function getActivities(){
         })
     }
 }
+export function detallePais(id){
+    return async function(dispatch){
+        try{
+        var detail = await axios.get('http://localhost:3001/paises/'+id);
+        console.log(detail)
+        console.log("cssssssssssssssssssssssssountry")
+        return dispatch({
+            type: 'GET_DETAIL',
+            payload: detail.data
+        })
+    }catch(error){
+        console.log(error)
+    }
+    }
+}
+
+export function postActividad(payload){
+    return async function(){
+        const res = await axios.post('http://localhost:3001/actividades', payload);
+        console.log(res)
+        return res;
+    }
+}
+
 export function getPaises(name){ //name llega por lo que me manden de la busqueda
     return async function(dispatch){
         try{
@@ -61,21 +85,3 @@ export function orderByPob(payload){
     }
 }
 
-export function detallePais(id){
-    return async function(dispatch){
-        var country = await axios.get('http://localhost:3001/paises/'+id);
-        console.log(country)
-        return dispatch({
-            type: 'GET_DETAIL',
-            payload: country.data
-        })
-    }
-}
-
-export function postActividad(payload){
-    return async function(){
-        const res = await axios.post('http://localhost:3001/actividades', payload);
-        console.log(res)
-        return res;
-    }
-}

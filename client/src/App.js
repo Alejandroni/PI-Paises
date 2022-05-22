@@ -6,7 +6,7 @@ import Actividades from './components/Actividades';
 import Detail from './components/Detail';
 
 function App() {
-  console.log("algo")
+ 
   return (
     
     <div className="App">
@@ -15,7 +15,7 @@ function App() {
       <Route path='/' element={<LandingPage/>} /> 
       <Route path='/home' element={<Home/>} />
       <Route path='/creacion' element ={<Actividades/>}/>
-      <Route path='/home/:idPais' element ={<Detail/>}/>
+      <Route path='/home/:id' element ={<Detail/>}/>
       </Routes>
     </div>
    

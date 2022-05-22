@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux"
 import { getCountries,filterContinent, filterActivity,orderByName,orderByPob, getActivities } from "../actions";
 import {Link} from "react-router-dom"
-import Card from "./Card"
+import CountryCard from "./Card"
 import Paginado from "./Paginado";
 import SearchBar from "./SearchBar";
 import style from "./Home.module.css";
@@ -18,7 +18,7 @@ export default function Home(){
     const [countriesPerPage, setCountriesPerPage] = useState(10) //quiero 10 por pagina
     const indexOflastCountry = currentPage * countriesPerPage //index = 10--------20
     const indexOflFirstCountry = indexOflastCountry - countriesPerPage //---------- 0---------10
-    const [pageNumberLimit] = useState(13);
+    const [pageNumberLimit] = useState(5);
     const currentCountry = allCountries.slice(indexOflFirstCountry, indexOflastCountry)//agarrar arreglo de todo pero solo toma indice del primero y el ultimo  //cortar el arreglo y esa porcion son los paises que estan en la pagina actual/cada pagina
     const paginado = (pageNumber) =>{ //ayudar al renderizado
         setCurrentPage(Number(pageNumber.target.id))
@@ -112,10 +112,18 @@ dispatch(getCountries())
               <option value="Oceania">Oceania</option>
               <option value="Antarctica">Antartida</option>
         </select>
-        <select  onChange={(e)=> handleActivity(e)}>
-                                                                  {/**personajes */}
-            <option defaultValue value="ALL">Actividades</option>
-           
+        <select  
+              name="actividad"
+              onChange={(e) => handleActivity(e)}>
+                                                                
+            <option defaultValue value="ALL">
+              Actividades
+              </option>
+              {allActivities?.map((e) => (
+                <option key={e.id} value={e.name}>
+                  {e.name}
+                </option>
+              ))}
         </select>
         <div className={style.paginado}>
         <Paginado
@@ -130,11 +138,11 @@ dispatch(getCountries())
               {currentCountry?.map((el) => { //Existe? pues entonces mapea
             return (
                 <div key={el.id}>             
-                <Card
+                <CountryCard
                   id={el.id}
-                  name={el.name}
-                 img={el.img}
                   continent={el.continent}
+                  name={el.name}
+                  img={el.img}
                   activities={el.activities}
                   
                 />

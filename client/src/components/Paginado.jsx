@@ -44,7 +44,7 @@ export default function Paginado({
               key={number}
               id={number}
               onClick={paginado}
-              //className={pagActual == number ? style.active : null}
+             
             >
               {number}
             </li>
@@ -65,16 +65,5 @@ export default function Paginado({
           </ul>
         </nav>
       );
-    /*
-    return( ///renderizar los numeros
-    <nav>
-        <ul className='paginado'>
-            {pageNumbers && pageNumbers.map(number =>{//si hay un arreglo.. mapealo y devolveme los numeros del mapeado/ //cuando haga click en el link le voy a pasar mi paginado con el numero de paginas
-                <li>
-                <a onClick={()=> paginado(number)}>{number}</a> 
-                </li>
-            })}
-        </ul>
-    </nav>
-    )*/
+
 }

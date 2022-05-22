@@ -36,8 +36,8 @@ case "GET_ACTIVITY": //--------------------------------------traer Actividades d
       countries: action.payload,
     };
     case 'FILTER_BY_ACTIVITY': //--------------------------------------Filtro por actividades
-        console.log("YAAAAAAAAAA")
-        const prueba = state.allContinentes.filter((el) => {
+       
+        const prueba = state.allContinents.filter((el) => {
             var y = el.activities.find(
               (x) => x.name.toLowerCase() === action.payload.toLowerCase()
             );
