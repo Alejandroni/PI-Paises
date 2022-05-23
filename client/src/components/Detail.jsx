@@ -6,13 +6,6 @@ import { detallePais } from "../actions";
 
 export default function Detail() {
  
-  
- //const paises = useSelector((store) => store.detail);
-  //const dispatch = useDispatch()
-  /*useEffect(()=>{
-    dispatch(detallePais(props.params.id))
-  },[dispatch])*/
-
   const myCountry = useSelector((state)=>state.detail)
   let params = useParams()
   let dispatch = useDispatch()
@@ -27,7 +20,7 @@ return(
     
     <h1>{myCountry.name}</h1>
     <h5>{myCountry.id}</h5>
-    <img src={myCountry.img} alt="not found" />
+    <img src={myCountry.flag} alt="not found" />
     <div className={style.text}>
             <label htmlFor="">Capital:</label>
             <h3 className={style.h3}>{myCountry.capital}</h3>
