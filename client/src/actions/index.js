@@ -1,38 +1,67 @@
 import axios from 'axios';
-//traer personajes
-export function getCountries(){
-    return async function(dispatch){ //ruta del back que trae los paises
-        var json = await axios.get('http://localhost:3001/paises')//por default hace el get pero dejemoslo por si las moscas;
+
+export function traerPaises(){
+
+    
+    return async function(dispatch){
+        var json = await axios.get('http://localhost:3001/countries');
+        
         return dispatch({
-            //necesito type y payload para despachar
-            type:'GET_COUNTRIES',
+            type: 'GET_PAISES',
             payload: json.data
         })
     }
 }
-export function getActivities(){
-    return async function(dispatch){ //ruta del back que trae los paises
-        var json = await axios.get('http://localhost:3001/actividades')//por default hace el get pero dejemoslo por si las moscas;
-        return dispatch({
-            //necesito type y payload para despachar
-            type:'GET_ACTIVITIES',
-            payload: json.data
-        })
+
+export function filterContinentes(payload){
+    //console.log(payload)
+    return{
+        type: 'FILTER_BY_REGION',
+        payload
     }
 }
+
 export function detallePais(id){
     return async function(dispatch){
         try{
-        var detail = await axios.get('http://localhost:3001/paises/'+id);
-        console.log(detail)
+        var pais = await axios.get('http://localhost:3001/countries/'+id);
+        console.log(pais)
         console.log("cssssssssssssssssssssssssountry")
         return dispatch({
             type: 'GET_DETAIL',
-            payload: detail.data
+            payload: pais.data
         })
     }catch(error){
         console.log(error)
     }
+    }
+}
+
+export function buscarPaises(name){
+    return async function(dispatch){
+        try{
+          var queryPaises = await axios.get('http://localhost:3001/countries?name=' + name);  
+          return dispatch({
+              type: 'GET_QUERY_COUNTRY',
+              payload: queryPaises.data
+          })
+        } catch(err){
+            console.log(err)
+        }
+        
+    }
+}
+export function traerActividad(){
+    return async function(dispatch){
+        try{
+            const actividad = await axios.get('http://localhost:3001/actividades');
+            return dispatch({
+                type: 'GET_ACTIVIDADES',
+                payload: actividad.data
+            })
+        } catch(err){
+            console.log(err)
+        }
     }
 }
 
@@ -44,30 +73,10 @@ export function postActividad(payload){
     }
 }
 
-export function getPaises(name){ //name llega por lo que me manden de la busqueda
-    return async function(dispatch){
-        try{
-          var queryPaises = await axios.get('http://localhost:3001/paises/nombre?name=' + name);  
-          return dispatch({
-              type: 'GET_QUERY_COUNTRY',
-              payload: queryPaises.data
-          })
-        } catch(err){
-            console.log(err)
-        }
-        
-    }
-}
-export function filterContinent(payload){ //payload === value del input
-    console.log(payload)
+export function filtrarActividad(payload){
     return{
-        type: 'FILTER_BY_CONTINENT',
+        type: 'FILTER_BY_ACTIVITY',
         payload
-    }
-}
-export function filterActivity(payload){
-    return{
-        type: "FILTER_BY_ACTIVITY", payload
     }
 }
 
@@ -84,4 +93,3 @@ export function orderByPob(payload){
         payload
     }
 }
-

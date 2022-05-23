@@ -1,14 +1,14 @@
-import React from "react";
-import {Link} from "react-router-dom";
+import React from 'react';
+import {Link} from 'react-router-dom'
+import style from './LandingPage.module.css'
 
 export default function LandingPage(){
-    console.log("aparece!")
     return(
-        <div>
-                <h1>Bienvenidos a mi mega Pagina</h1>
-                <Link to ="/home">
-                    <button>Ingresar</button>
-                </Link> 
+        <div className={style.div}>
+            <h1 className={style.h1}>BIENVENIDOS A RECORRER EL MUNDO</h1>
+            <Link to='/Home'>
+                <button className={style.button}>Iniciar Viaje</button>
+            </Link>
         </div>
     )
 }

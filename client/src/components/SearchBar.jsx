@@ -1,21 +1,20 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { getPaises } from "../actions";
+import { buscarPaises  } from "../actions";
 import style from './SearchBar.module.css'
 
 export default function SearchBar({ onSearch }) {
-  const dispatch = useDispatch();//hooks
-  const [name, setName] = useState("");//corcheteo en string vacio
- 
+  const dispatch = useDispatch();
+  const [name, setName] = useState("");
 
   function handleInputChange(e) {
     e.preventDefault();
-    setName(e.target.value); //el value del input va a tomar el value del state
+    setName(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    dispatch(getPaises(name));
+    dispatch(buscarPaises (name));
     setName(""); // Limpia el input
   }
 

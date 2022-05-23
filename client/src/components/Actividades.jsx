@@ -1,19 +1,19 @@
-import React, { useState , useEffect} from "react";
-import { useDispatch, useSelector } from "react-redux";
+import React, { useState } from "react";
+import { useSelector } from "react-redux";
 import axios from "axios";
 import style from "./ActivityCreate.module.css";
-import { useHistory } from "react-router-dom";
+
 import { Link } from "react-router-dom";
 
-export default function CreacionDeActividades(){
-    const dispatch = useDispatch()
-    const countries = useSelector((state) => state.allContinents);
-    const [validate, setValidate] = useState({}); 
-   
+export default function ActivityCreate() {
+  const countries = useSelector((state) => state.allContinentes);
+  
+  const [validate, setValidate] = useState({});
+
   const [activity, setActivity] = useState({
     name: "",
     level: "1",
-    duration: "",
+    time: "",
     season: "Verano",
     pais: "",
     paises: [],
@@ -28,7 +28,7 @@ export default function CreacionDeActividades(){
     });
   }
 
-  function agregarPais() {  // para agregar pais a la creacion de actividades filtro los paises
+  function agregarPais() {  // para agregar pais filtro los paises
     var aux = countries.filter((e) => e.name === activity.pais);
     if (activity.paises.length === 0) {
       setActivity({
@@ -77,7 +77,7 @@ export default function CreacionDeActividades(){
         setActivity({ //se actualiza antes de enviar
           name: "",
           level: "1",
-          duration: "",
+          time: "",
           season: "Verano",
           pais: "",
           paises: [],
@@ -93,7 +93,7 @@ export default function CreacionDeActividades(){
     setActivity({
       name: "",
       level: "1",
-      duration: "",
+      time: "",
       season: "Verano",
       pais: "",
       paises: [],
@@ -143,14 +143,14 @@ export default function CreacionDeActividades(){
           <label>Duracion:</label>
           <input
             type="number"
-            value={activity.duration}
-            name="duration"
+            value={activity.time}
+            name="time"
             placeholder="tiempo de duracion de la actividad"
             onChange={(e) => onInputChange(e)}
           />{" "}
-          <span> horas </span> <br />
+          <span> minutos </span> <br />
           <br />
-          {validate.duration && <h5>{validate.duration}</h5>}
+          {validate.time && <h5>{validate.time}</h5>}
           <label>Temporada:</label>
           <select name="season" onChange={(e) => onInputChange(e)}>
             <option name="season" value="Verano">
@@ -219,8 +219,8 @@ function error(datos) {
   if (!datos.name) {
     data.name = "Debe ingresar un nombre";
   }
-  if (!datos.duration) {
-    data.duration = "Debe ingresar el tiempo de duracion";
+  if (!datos.time) {
+    data.time = "Debe ingresar el tiempo de duracion";
   }
   if (datos.paises.length < 1) {
     data.paises = "Debe ingresar por lo menos un pais";
