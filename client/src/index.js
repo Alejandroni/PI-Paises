@@ -6,7 +6,6 @@ import reportWebVitals from './reportWebVitals';
 //import Provider para asignar el store
 import {Provider} from 'react-redux'
 import store from './store'
-import { BrowserRouter } from 'react-router-dom';
 //envolver siempre todo en el provider o suerte con el redux
 ReactDOM.render(
   <Provider store={store}> 

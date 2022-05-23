@@ -11,7 +11,7 @@ router.get("/", async (req, res) => {
     include: Activity,
   });
   if (name) {
-    let countriesName = await Country.filter((el) =>
+    let countriesName = await countries.filter((el) =>
       el.name.toLowerCase().includes(name.toLowerCase())
     );
     countriesName.length

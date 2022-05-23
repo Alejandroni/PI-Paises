@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import {useDispatch, useSelector} from "react-redux"
-import {detallePais,
+import {
   filterContinentes,
   traerPaises,
   filtrarActividad,
@@ -17,12 +17,10 @@ export default function Home(){
   const dispatch = useDispatch();
   const todosPaises = useSelector((state) => state.paises);
   const todasActividades = useSelector((state) => state.actividades);
-  const [orden, setOrden] = useState("");
+  const [ordenado, setOrden] = useState("");
   const [pagActual, setPagActual] = useState(1); // Mi pagina actual sera 1
-  const [paisesPorPag, setPaisesPorPag] = useState(10); // Cantidad de paises que quiero por pag.
+  const [paisesPorPag] = useState(10); // Cantidad de paises que quiero por pag.
   const [pageNumberLimit] = useState(5);
-  const [maxPageNumberList, setMaxPageNumberList] = useState(5);
-  const [minPageNumberList, setMinPageNumberList] = useState(0);
   const [activity, setActivity] = useState(null);//-----------------------no se ha filtrado nada, cambia cuando aplique el filtro
   const indexOfUltimoPais = pagActual * paisesPorPag; // 10
   const indexOfPrimerPais = indexOfUltimoPais - paisesPorPag; // 0
@@ -103,7 +101,7 @@ export default function Home(){
               className={style.select}
               onChange={(e) => handleFilterContinent(e)}
             >
-                       <option value="All" >Buscar Continente</option> 
+              <option value="All" >Buscar Continente</option> 
               <option value="North America">America del Norte</option>
               <option value="South America">America del Sur</option>
               <option value="Asia">Asia</option>
@@ -151,7 +149,7 @@ export default function Home(){
                   img={el.flag}
                   continent={el.continent}
                   activities={el.activities}
-              
+                
                 />
             
               </div>
