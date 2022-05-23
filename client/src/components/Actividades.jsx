@@ -28,7 +28,7 @@ export default function CreacionDeActividades(){
     });
   }
 
-  function agregarPais() {  // para agregar pais filtro los paises
+  function agregarPais() {  // para agregar pais a la creacion de actividades filtro los paises
     var aux = countries.filter((e) => e.name === activity.pais);
     if (activity.paises.length === 0) {
       setActivity({
@@ -148,7 +148,7 @@ export default function CreacionDeActividades(){
             placeholder="tiempo de duracion de la actividad"
             onChange={(e) => onInputChange(e)}
           />{" "}
-          <span> minutos </span> <br />
+          <span> horas </span> <br />
           <br />
           {validate.duration && <h5>{validate.duration}</h5>}
           <label>Temporada:</label>

@@ -19,18 +19,19 @@ export default function Home(){
     const indexOflastCountry = currentPage * countriesPerPage //index = 10--------20
     const indexOflFirstCountry = indexOflastCountry - countriesPerPage //---------- 0---------10
     const [pageNumberLimit] = useState(5);
+    const [activity, setActivity] = useState(null) //----------------------------------------------------------????????????????????
     const currentCountry = allCountries.slice(indexOflFirstCountry, indexOflastCountry)//agarrar arreglo de todo pero solo toma indice del primero y el ultimo  //cortar el arreglo y esa porcion son los paises que estan en la pagina actual/cada pagina
-    const paginado = (pageNumber) =>{ //ayudar al renderizado
+    const paginado = (pageNumber) =>{ //ayudar al renderizado de numeros
         setCurrentPage(Number(pageNumber.target.id))
     }
    //--------------------------------------------------------------
-    const [activity, setActivity] = useState(null) //----------------------------------------------------------????????????????????
+    
     
     //-------------------------------------------------------------
     //traer del estado los paises cuando el componente se monta
     useEffect(()=>{
     dispatch(getCountries()) //despachar acciones
-    //dispatch(getActivities())
+    dispatch(getActivities())
     },[dispatch] /*de lo que depende el componente*/)
 
     //------------------------------------------------------FILTRAR CONTINENTES
@@ -96,10 +97,10 @@ dispatch(getCountries())
         </select>
         <select onChange={(e) => handleOrder(e)}>
         <option value='asc'>{/*value siempre dentro de option para permitir acceder a lo que quiero*/}
-                Ascendente
+        A-Z
             </option>
             <option value='des'> 
-                Descendente 
+                Z-A 
             </option>
         </select>
         <select onChange={(e) => handleFilterContinent(e)}> CONTINENTES

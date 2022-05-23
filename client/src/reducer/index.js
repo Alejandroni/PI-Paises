@@ -33,7 +33,9 @@ case "GET_DETAIL": //-------------------------------------------traer info de ca
 case "GET_ACTIVITY": //--------------------------------------traer Actividades de cada pais
     return {
       ...state,
-      countries: action.payload,
+      activities: action.payload, //meter los paises filtrados
+      allActivities: action.payload,
+     
     };
     case 'FILTER_BY_ACTIVITY': //--------------------------------------Filtro por actividades
        
@@ -80,32 +82,20 @@ case "GET_ACTIVITY": //--------------------------------------traer Actividades d
               paises: sortedArr,
             };
           case "ORDER_BY_POB":
-            let sortedPob =
-              action.payload === "men"
-                ? state.countries.sort(function (a, b) {
-                    if (a.population > b.population) {
-                      return 1;
-                    }
-                    if (a.population < b.population) {
-                      return -1;
-                    }
-                    return 0;
-                  })
-                : state.countries.sort(function (a, b) {
-                    if (a.population > b.population) {
-                      return -1;
-                    }
-                    if (a.population < b.population) {
-                      return 1;
-                    }
-                    return 0;
-                  });
+            let orderByPop = [
+              ...state.countries
+            ];
+            orderByPop = action.payload === "men" ? state.countries.sort(function (a,b){
+              return a.population - b.population
+            }) : state.countries.sort(function (a,b){
+              return b.population - a.population
+            })
             return {
               ...state,
-              countries: sortedPob,
+              countries: orderByPop,
             };
             case 'POST_ACTIVITY':
-             return{
+             return{ 
                ...state,
              }
         default:
