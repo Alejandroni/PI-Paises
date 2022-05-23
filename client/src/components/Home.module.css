@@ -4,8 +4,9 @@
     border-radius: 25px;
     border: 1px solid #ffffff;
     cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.363);
     color: #ffffff;
+    background-color: rgba(0, 0, 0, 0.363);
+    
     transition: 0.3s;
   }
   
