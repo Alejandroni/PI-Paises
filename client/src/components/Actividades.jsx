@@ -189,9 +189,9 @@ export default function ActivityCreate() {
           <button onClick={() => agregarPais()}> Agregar Pais</button>
 
           {activity.paises.map((el) => (
-            <div>
+            <div key={el.id}>
               {" "}
-              <p> {el} </p>
+              <h3> {el} </h3>
               <button key={el.name} value={el} onClick={() => borrarPais(el)}>
                 X
               </button>

@@ -1,11 +1,11 @@
 
 
 .button {
-    border-radius: 25px;
+    border-radius: 5px;
     border: 1px solid #ffffff;
     cursor: pointer;
     color: #ffffff;
-    background-color: rgba(0, 0, 0, 0.363);
+    background-color: rgba(131, 131, 131, 0.363);
     
     transition: 0.3s;
   }
@@ -13,14 +13,14 @@
   .button:hover {
     color: rgb(255, 255, 255);
     background: rgba(27, 23, 23, 0.281);
-    border: 3px solid #000000;
+    border: 3px solid #bdbdbd;
   }
   
   .select {
     background-color: rgba(0, 0, 0, 0.363);
     color: #ffffff;
     border: 1px solid #ffffff;
-    border-radius: 25px;
+    border-radius: 5px;
   }
   
   .Nav {
@@ -39,7 +39,7 @@
     background-color: rgba(19, 1, 1, 0.295);
   }
   
-  .paginado {
+  .paginado {  
     display: flex;
     justify-content: space-around;
     align-items: center;
