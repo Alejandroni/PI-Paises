@@ -16,7 +16,18 @@ export default function Detail() {
 },[dispatch, id])
 
 return(
-  <div>
+
+  <div className={style.contenedor}>
+
+<div className={style.box}>
+                        <Link to="/home">
+                {" "}
+                <button className={style.button}>Inicio</button>
+              </Link>
+              </div>
+
+    <div className={style.card}>
+
     
     <h1>{myCountry.name}</h1>
     <h5>{myCountry.id}</h5>
@@ -30,48 +41,25 @@ return(
             <h3 className={style.h3}>{myCountry.area}</h3>
             <label htmlFor="">Poblacion:</label>
             <h3 className={style.h3}>{myCountry.population}</h3>
-          </div>
+    </div>
           <div>
-          <h3>
-              Actividades :{" "}
+          <h3>Actividades:{" "}</h3>
+          <div className={style.padre}>
               {myCountry.activities?.map((actividad) => (
-                <table key={actividad.id}>
-                  <tbody>
-                    <td></td>
-                    <td className={style.actividad}>
+                <div className={style.hijo} key={actividad.id}>
+                    <div className={style.actividad}>
                       <h5>{actividad.name}</h5>
-                    </td>
-                    <td></td>
-                    <tr>
-                      <td>
-                        <h5>Duracion: {actividad.duration}</h5>
-                      </td>
-                      <td>
+                    </div>
+                      <div>
+                        <h5>Duracion: {actividad.time}</h5>
                         <h5>Dificultad: {actividad.level}</h5>
-                      </td>
-                      <td>
                         <h5>Temporada: {actividad.season}</h5>
-                      </td>
-                    </tr>
-                  </tbody>
-                </table>
+                      </div>
+                </div>
               ))}
-            </h3>
+            </div>
           </div>
-    {/*
-   
-      myCountry.length > 0 ? 
-      <div>
-        <h1>{myCountry[0].name}</h1>
-        <img src={myCountry[0].img} alt="not found" />
-      </div> : <p>Cargando...</p>
-*/}
-
-<div className={style.box}>
-      <Link to="/home">
-        {" "}
-        <button className={style.button}>Inicio</button>
-      </Link></div>
+          </div>
   </div>
 )
 }

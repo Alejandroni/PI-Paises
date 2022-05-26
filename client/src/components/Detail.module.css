@@ -1,67 +1,84 @@
-.box {
-    background: rgba(250, 250, 250, 0.164);
-    width: 80%;
-    height: 100%;
-    float: center;
-    margin: 20px 20px 20px 80px;
-    border-radius: 15px;
-    box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
-    -webkit-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
-    -moz-box-shadow: 0px 10px 20px 0px rgba(0, 0, 0, 0.3);
-  }
-  
-  .info {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-template-rows: auto;
-    height: auto;
-  }
+.contenedor{
+  margin: 0;
+  position: relative;
+  width: 100%;
+  height: auto;
+  margin-bottom: 5%;
+}
+.card{
+  flex-wrap: wrap;
+  width: 30%;
+  height: auto;
+  background-color: rgb(255, 255, 255);
+  border-radius:10px;
+  padding: 32px;
+  margin: auto;
+  margin-top: 3%;
+  box-shadow: 0px 11px 41px 15px rgba(34, 31, 68, 0.219);
+
+}
   
   .h3 {
     margin: 0;
-    color: aliceblue;
+    color: rgb(44, 99, 219);
+  }
+  .h5 {
+    margin: 0;
   }
   
-  .img {
-    
-    width: 200px;
-    height: 100px;
-    margin-top: 60px;
-    margin-left: 10px;
+  img {
+    width: 40%;
+    min-width:120px;
+    height:auto;
   }
+  
   
   .text{
-      margin-top: 60px;
-      margin-right: 5px;
-      margin-left: 5px;
+    margin-top: 3%;
+    column-count: 2;
+    column-width: 100px;
   }
   
+  .padre{
+   /* column-count: 2;
+   /* column-width: 150px;*/
+  }
+  .hijo{
+    background-color: rgb(255, 255, 255);
+    border-radius:10px;
+    padding: 24px 8px 24px 8px;
+    margin: auto;
+    margin-top: 3%;
+    width: 90%;
+    height: auto;
+    box-shadow: 0px 11px 41px 15px rgba(34, 31, 68, 0.219);
+
+  }
   .actividad{
-      display: flex;
-      justify-content: center;
-      text-align: center;
-      width: auto;
+  
   }
-  
-  .button {
-      display: inline-block;
-    font-size: 1em;
-    background: rgb(255, 255, 255);
-    padding: 10px 30px;
-    text-transform: uppercase;
-    text-decoration: none;
-    border: none;
-    /* border-radius: 25px; */
-    font-weight: 500;
-    margin-top: 10px;
-    color: rgb(0, 0, 0);
-    letter-spacing: 2px;
-    transition: 0.2s;
-    cursor: pointer;
+
+
+    .box {
+      flex-wrap: wrap;
+      width: 32%;
+      min-width: 200px;
+      margin: auto;
+      margin-top: 3%;
+      }
+    .button {
+      text-transform: uppercase;
+      width: 100%;
+      border-radius:20px;
+      border: 2px solid rgb(87, 140, 253);
+      padding: 8px 16px 8px 16px;
+      cursor: pointer;
+      color: #ffffff;
+      background-color: rgb(44, 99, 219);
     }
-  
+    
     .button:hover {
       color: rgb(255, 255, 255);
-      background: rgba(27, 23, 23, 0.281);
-      border: 3px solid #000000;
+      background: rgb(87, 140, 253);
+      border: 2px solid rgb(44, 99, 219);
     }

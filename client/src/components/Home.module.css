@@ -1,27 +1,36 @@
-
-
 .button {
-    border-radius: 5px;
-    border: 1px solid #ffffff;
+    border-radius:20px;
+    border: 2px solid rgb(87, 140, 253);
+    padding: 8px 16px 8px 16px;
     cursor: pointer;
     color: #ffffff;
-    background-color: rgba(131, 131, 131, 0.363);
-    
+    background-color: rgb(44, 99, 219);
     transition: 0.3s;
+    margin-bottom:10px;
+    margin-right: 8px;
   }
   
   .button:hover {
     color: rgb(255, 255, 255);
-    background: rgba(27, 23, 23, 0.281);
-    border: 3px solid #bdbdbd;
+    background: rgb(87, 140, 253);
+    border: 2px solid rgb(44, 99, 219);
   }
   
   .select {
-    background-color: rgba(0, 0, 0, 0.363);
+    background-color: rgb(44, 99, 219);
     color: #ffffff;
-    border: 1px solid #ffffff;
-    border-radius: 5px;
+    border-radius:20px;
+    border: 2px solid rgb(87, 140, 253);
+    padding: 8px 16px 8px 16px;
+    margin-bottom:10px;
+    margin-right: 8px;
   }
+  .select:hover {
+    color: rgb(255, 255, 255);
+    background: rgb(87, 140, 253);
+    border: 2px solid rgb(44, 99, 219);
+  }
+
   
   .Nav {
     position: relative;
@@ -29,14 +38,19 @@
   }
   
   .container {
-    display: flex;
+    display: flex; 
+    flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    padding-left: 30px;
-    padding-right: 30px;
-    padding-top: 2px;
-    background-color: rgba(19, 1, 1, 0.295);
+    background-color: rgb(255, 255, 255);
+    border-radius:10px;
+    padding: 24px 8px 24px 8px;
+    margin: auto;
+    margin-top: 3%;
+    width: 90%;
+    height: auto;
+    box-shadow: 0px 11px 41px 15px rgba(34, 31, 68, 0.219);
   }
   
   .paginado {  
@@ -44,7 +58,7 @@
     justify-content: space-around;
     align-items: center;
     align-content: center;
-    background-color: rgba(19, 1, 1, 0.295);
+
   }
   
   .h1 {
@@ -58,11 +72,14 @@
       padding: 0;
   }
   
-  .box {
+ /*.box {
     /* display: grid;
-    grid-template-columns: repeat(5, 1fr); */
+    grid-template-columns: repeat(5, 1fr);
+
+    
     max-height: 80%;
     max-width: 100%;
     padding: 0;
-    margin: 0;
-  }
+    margin: 0;  
+    background-color: blueviolet;
+  }*/

@@ -11,11 +11,8 @@ export default function Paginado({
 }) {
   const pageNumbers = [];
   const [pagActual, setPagActual] = useState(1);
- // const indexOfUltimoPais = pagActual * paisesPorPag; // 10
- // const indexOfPrimerPais = indexOfUltimoPais - paisesPorPag; // 0
-  //const paisActual = todosPaises.slice(indexOfPrimerPais, indexOfUltimoPais);
-  const [pageNumberLimit] = useState(5);
-  const [maxPageNumberList, setMaxPageNumberList] = useState(5);
+  const [pageNumberLimit] = useState(5); 
+  const [maxPageNumberList, setMaxPageNumberList] = useState(10);//pintar la cantidad de numeros
   const [minPageNumberList, setMinPageNumberList] = useState(0);
 
   for (let i = 1; i <= Math.ceil(todosPaises.length / paisesPorPag); i++) {

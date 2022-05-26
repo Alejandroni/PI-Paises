@@ -21,7 +21,7 @@ router.get("/", async (req, res) => {
     res.status(200).send(countries);
   }
 });
-
+/*
 router.get("/nombre", async (req, res) => {
   const name = req.query.name; 
     const country = await Country.findAll({
@@ -30,6 +30,7 @@ router.get("/nombre", async (req, res) => {
   });
   return res.status(200).send(country);
 });
+*/
 
 router.get("/:idPais", async(req, res)=>{
   const {idPais} = req.params;

@@ -22,8 +22,8 @@ export default function Home(){
   const [paisesPorPag] = useState(10); // Cantidad de paises que quiero por pag.
   const [pageNumberLimit] = useState(5);
   const [activity, setActivity] = useState(null);//-----------------------no se ha filtrado nada, cambia cuando aplique el filtro
-  const indexOfUltimoPais = pagActual * paisesPorPag; // 10
-  const indexOfPrimerPais = indexOfUltimoPais - paisesPorPag; // 0
+  const indexOfUltimoPais = pagActual * paisesPorPag; // 10----------20
+  const indexOfPrimerPais = indexOfUltimoPais - paisesPorPag; // 0---------10
   const paisActual = todosPaises.slice(indexOfPrimerPais, indexOfUltimoPais);
 
   const paginado = (e) => {
@@ -72,7 +72,9 @@ export default function Home(){
     <div >
       <div className={style.Nav}>
         <nav>
+        
           <div className={style.container}>
+          <SearchBar />
             <Link className={style.link} to="/actividades">
               <button className={style.button}>Crear Actividad</button>
             </Link>
@@ -82,7 +84,7 @@ export default function Home(){
                 handleClick(e);
               }}
             >
-              Cargar Paises
+              Borar filtros
             </button>
             <select className={style.select} onChange={(e) => handleOrder(e)}>
               <option value="">Filtrar por A-Z</option>
@@ -131,11 +133,10 @@ export default function Home(){
           <Paginado
             paisesPorPag={paisesPorPag}
             todosPaises={todosPaises}
-        
             pageNumberLimit={pageNumberLimit}
             paginado={paginado}
           ></Paginado>
-          <SearchBar />
+          
         </div>
 
         <div className={style.box}>

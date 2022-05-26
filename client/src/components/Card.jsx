@@ -7,7 +7,7 @@ import style from "./Card.module.css"
 export default function Card({ img, name, continent, id, population }) {
   const dispatch = useDispatch();
   return (
-    <div>
+    <div className={style.este}>
        <Link
         to={`/home/${id}`}
         onClick={() => dispatch(detallePais(id))}
