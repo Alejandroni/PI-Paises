@@ -19,7 +19,7 @@ export default function Home(){
   const todasActividades = useSelector((state) => state.actividades);
   const [ordenado, setOrden] = useState("");
   const [pagActual, setPagActual] = useState(1); // Mi pagina actual sera 1
-  const [paisesPorPag] = useState(10); // Cantidad de paises que quiero por pag.
+  const [paisesPorPag, setPaisesPorPag] = useState(10); // Cantidad de paises que quiero por pag.
   const [pageNumberLimit] = useState(5);
   const [activity, setActivity] = useState(null);//-----------------------no se ha filtrado nada, cambia cuando aplique el filtro
   const indexOfUltimoPais = pagActual * paisesPorPag; // 10----------20

@@ -10,8 +10,8 @@ export default function Paginado({
   pageNumberlimit,
 }) {
   const pageNumbers = [];
-  const [pagActual, setPagActual] = useState(1);
-  const [pageNumberLimit] = useState(5); 
+  const [pagActual, setPagActual] = useState(1); //pagina en la que inicio
+  const [pageNumberLimit] = useState(5); //limite de numeros que aparece en el home
   const [maxPageNumberList, setMaxPageNumberList] = useState(10);//pintar la cantidad de numeros
   const [minPageNumberList, setMinPageNumberList] = useState(0);
 
