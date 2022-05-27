@@ -8,7 +8,7 @@
   .h1 {
     font-family: "Century Gothic", sans-serif;
     font-size: 200%;
-    color: #f9f3f4;
+    color: #4a03f0;
     text-shadow: 2px 2px 2px #cecece;
   }
   
@@ -37,7 +37,7 @@
     transition: 0.2s;
     cursor: pointer;
   }
-  
+ 
   .button:hover {
     letter-spacing: 6px;
     color: rgb(255, 255, 255);

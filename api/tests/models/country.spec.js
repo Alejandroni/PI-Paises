@@ -14,12 +14,12 @@ describe('Country model', () => {
           .then(() => done(new Error('It requires a valid name')))
           .catch(() => done());
       });
-      it('should work when its a valid name', () => {
+      xit('should work when its a valid name', () => {
         Country.create({ name: 'Colombia' });
       });
     });
     describe('capital',()=>{
-      it('Mostrar un error si la capital es null',(done)=>{
+      xit('Mostrar un error si la capital es null',(done)=>{
         Country.create({})
         .then(()=>done(new Error ('Se requiere una Capital')))
         .catch(()=>done());
