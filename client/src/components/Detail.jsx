@@ -51,7 +51,7 @@ return(
                       <h5>{actividad.name}</h5>
                     </div>
                       <div>
-                        <h5>Duracion: {actividad.time}</h5>
+                        <h5>Duracion: {actividad.time} minutos</h5>
                         <h5>Dificultad: {actividad.level}</h5>
                         <h5>Temporada: {actividad.season}</h5>
                       </div>
