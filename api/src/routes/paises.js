@@ -22,22 +22,7 @@ router.get("/", async (req, res) => {
   }
 });
 /*
-router.get("/conti", async (req, res) => {
-  const continent = req.query.continent;
-  const countries = await Country.findAll({
-    include: Activity,
-  });
-  if (continent) {
-    let countriesContinent = await countries.filter((el) =>
-      el.continent.toLowerCase().includes(continent.toLowerCase())
-    );
-    countriesName.length
-      ? res.status(200).send(countriesContinent)
-      : res.status(404).send("Continente no encontrado");
-  } else {
-    res.status(200).send(countries);
-  }
-});*/
+
 /*
 router.get("/nombre", async (req, res) => {
   const name = req.query.name; 
