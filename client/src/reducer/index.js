@@ -5,7 +5,7 @@ const initialState = {
   allActividades: [],
   detail: {},
 };
-
+//------------------------------------------------------------------traer paises
 function rootReducer(state = initialState, action) {
   switch (action.type) {
     case "GET_PAISES":
@@ -14,7 +14,7 @@ function rootReducer(state = initialState, action) {
         paises: action.payload,
         allPaises: action.payload,
       };
-
+//------------------------------------------------------------------FILTRAR CONTINENTES
       case "FILTER_BY_CONTINENT":
       const allPaises = state.allPaises;
       //console.log(allPaises)
@@ -28,19 +28,19 @@ function rootReducer(state = initialState, action) {
         paises:
           contiFiltrados /* state.allContinentes.filter(el => el.continent === action.payload) */,
       };
-
+//------------------------------------------------------------------DETALLE DEL PAIS
     case "GET_DETAIL":
       return {
         ...state,
         detail: action.payload,
       };
-
+//--------------------------------------------------------------------- pais por query
     case "GET_QUERY_COUNTRY":
       return {
         ...state,
         paises: action.payload,
       };
-
+//-------------------------------------------------------------------------traer paises
     case "GET_ACTIVIDADES":
       return {
         ...state,

@@ -21,7 +21,7 @@ export function filterContinentes(payload){
     }
 }
 //----------------------------------------------------------------------------------------------GET PAISES ID
-/*export function detallePais(id){
+export function detallePais(id){
     return async function(dispatch){
         try{
         var pais = await axios.get('http://localhost:3001/countries/'+id);
@@ -33,17 +33,6 @@ export function filterContinentes(payload){
     }catch(error){
         console.log(error)
     }
-    }
-}*/
-export function detallePais(id){
-    return function(dispatch){
-        axios.get(`http://localhost:3001/countries/${id}`)
-        .then(detalle=>{
-            dispatch({
-                type: 'GET_DETAIL',
-            payload: detalle.data
-            })
-        })
     }
 }
 //----------------------------------------------------------------------------------------------GET PAISES QUERY
