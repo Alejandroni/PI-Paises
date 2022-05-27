@@ -8,7 +8,7 @@
 
 .ent{
     width: 400px;
-    background-color: #ffffff3f;
+    background-color: #ffffff;
     display: inline-table;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
@@ -16,23 +16,25 @@
 }
 
 .btn{ 
-    display: inline-table;
-    padding: 50px;
-background-color: #6e6e6e62;
-padding: 10px 45px 10px 45px;
-color: 	white;
-    border-radius: 50px;
- 
+    border-radius:20px;
+    border: 2px solid rgb(87, 140, 253);
+    padding: 8px 16px 8px 16px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: rgb(44, 99, 219);
+    transition: 0.3s;
+    margin-bottom:10px;
+    margin-right: 8px;
 }
 .btn:hover{
-    color: black;
-    background-color: white ;
-
+    color: rgb(255, 255, 255);
+    background: rgb(87, 140, 253);
+    border: 2px solid rgb(44, 99, 219);
 }
 
 .table{
     padding: 50px;
-    background-color: #ffffff3f;;
+    background-color: #ffffff;;
     display: inline-table;
     width: 400px;
     

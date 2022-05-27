@@ -34,7 +34,7 @@ export default function Paginado({
 
 
   const handlePrevbtn = ()=>{
-    setPagActual(pagActual-5);
+    setPagActual(pagActual-10);
 
     if((pagActual-1)%pageNumberLimit===0){
       setMaxPageNumberList(maxPageNumberList - pageNumberLimit);
@@ -43,7 +43,7 @@ export default function Paginado({
   }
 
   const renderPageNumbers = pageNumbers.map((number) => {
-    console.log(pagActual)
+   // console.log(pagActual)
     if (number < maxPageNumberList + 1 && number > minPageNumberList) {
       return (
         <li

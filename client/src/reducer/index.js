@@ -1,6 +1,6 @@
 const initialState = {
   paises: [],
-  allContinentes: [],
+  allPaises: [],
   actividades: [],
   allActividades: [],
   detail: {},
@@ -12,11 +12,11 @@ function rootReducer(state = initialState, action) {
       return {
         ...state,
         paises: action.payload,
-        allContinentes: action.payload,
+        allPaises: action.payload,
       };
 
-    case "FILTER_BY_REGION":
-      const allPaises = state.allContinentes;
+      case "FILTER_BY_CONTINENT":
+      const allPaises = state.allPaises;
       //console.log(allPaises)
       const contiFiltrados =
         action.payload === "All"
@@ -60,7 +60,7 @@ function rootReducer(state = initialState, action) {
       };
 
     case "FILTER_BY_ACTIVITY":
-      const prueba = state.allContinentes.filter((el) => {
+      const prueba = state.allPaises.filter((el) => {
         var y = el.activities.find(
           (x) => x.name.toLowerCase() === action.payload.toLowerCase()
         );
@@ -71,57 +71,37 @@ function rootReducer(state = initialState, action) {
         paises: prueba,
       };
 
-    case "ORDER_BY_NAME":
-      let sortedArr =
-        action.payload === "asc"
-          ? state.paises.sort(function (a, b) {
-              if (a.name > b.name) {
-                return 1;
-              }
-              if (a.name < b.name) {
-                return -1;
-              }
-              return 0;
+      case "ORDER_BY_NAME":
+            let sortedArr = [...state.paises]
+            sortedArr = sortedArr.sort((a,b) => {
+                if(a.name<b.name){
+                    return action.payload === "asc" ? -1 : 1;
+                }
+                if(a.name>b.name){
+                    return action.payload ==="asc" ? 1 : -1;
+                }
+                return 1
             })
-          : state.paises.sort(function (a, b) {
-              if (a.name > b.name) {
-                return -1;
-              }
-              if (a.name < b.name) {
-                return 1;
-              }
-              return 0;
-            });
-      return {
-        ...state,
-        paises: sortedArr,
-      };
+            return{
+                ...state,
+                paises: sortedArr
+            }
 
     case "ORDER_BY_POB":
-      let sortedPob =
-        action.payload === "men"
-          ? state.paises.sort(function (a, b) {
-              if (a.population > b.population) {
-                return 1;
-              }
-              if (a.population < b.population) {
-                return -1;
-              }
-              return 0;
+      let sortedPob = [...state.paises]
+      sortedPob = sortedPob.sort((a,b) => {
+                if(a.population<b.population){
+                    return action.payload === "men" ? -1 : 1;
+                }
+                if(a.population>b.population){
+                    return action.payload ==="men" ? 1 : -1;
+                }
+                return 1
             })
-          : state.paises.sort(function (a, b) {
-              if (a.population > b.population) {
-                return -1;
-              }
-              if (a.population < b.population) {
-                return 1;
-              }
-              return 0;
-            });
-      return {
-        ...state,
-        paises: sortedPob,
-      };
+            return{
+                ...state,
+                paises: sortedPob
+            }
 
     default:
       return state;

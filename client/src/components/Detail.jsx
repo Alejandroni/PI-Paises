@@ -9,7 +9,7 @@ export default function Detail() {
   const myCountry = useSelector((state)=>state.detail)
   let params = useParams()
   let dispatch = useDispatch()
-  console.log(myCountry)
+ // console.log(myCountry)
   const id = params.id ? params.id : myCountry.id;
   useEffect(()=>{
     dispatch(detallePais(id))

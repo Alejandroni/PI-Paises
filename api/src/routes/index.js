@@ -7,11 +7,13 @@ const rutasPaises = require('./paises');
 const rutasActividades = require('./actividades')
 
 
+
 // Configurar los routers
 // Ejemplo: router.use('/auth', authRouter);
 
 
 router.use('/countries', rutasPaises)
+
 router.use('/actividades', rutasActividades)
 
 module.exports = router;

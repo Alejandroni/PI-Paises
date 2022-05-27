@@ -11,9 +11,8 @@ router.get("/", async (req, res) => {
   res.json(activity);
 });
 
-
 router.post("/", async (req, res) => {
-  const { name, level, time, season, /* id */ paises } = req.body;
+  const { name, level, time, season, paises } = req.body;
  
   const createdActivity = await Activity.create({
  
@@ -23,11 +22,15 @@ router.post("/", async (req, res) => {
     season,
   });
   try {
-    await createdActivity.addCountries(paises)
+    await createdActivity.addCountries(paises) //guardar el dato virtualmente
     return res.send("agregado");
   } catch (err) {
     return res.sendStatus(404);
   }
 });
+
+router.delete("", async(req,res,next)=>{
+
+})
 
 module.exports = router; 

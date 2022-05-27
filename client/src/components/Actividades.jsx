@@ -6,7 +6,7 @@ import style from "./ActivityCreate.module.css";
 import { Link } from "react-router-dom";
 
 export default function ActivityCreate() {
-  const countries = useSelector((state) => state.allContinentes);
+  const countries = useSelector((state) => state.allPaises);
   
   const [validate, setValidate] = useState({});
 
@@ -19,7 +19,8 @@ export default function ActivityCreate() {
     paises: [],
   });
 
-  function onInputChange(e) { // se setea con los valores que recibe del form cuando se afectan los inputs y los select.
+  function onInputChange(e) { 
+    
     setActivity(() => {
       return {
         ...activity,
@@ -28,7 +29,7 @@ export default function ActivityCreate() {
     });
   }
 
-  function agregarPais() {  // para agregar pais filtro los paises
+  function agregarPais() {  
     var aux = countries.filter((e) => e.name === activity.pais);
     if (activity.paises.length === 0) {
       setActivity({
@@ -37,14 +38,13 @@ export default function ActivityCreate() {
       });
       //console.log(activity.paises, "primer pais");
     } else {
-      //console.log("son mas de uno");
-      let flag = false;
+      let adicional = false;
       for (let i = 0; i < activity.paises.length; i++) {
         if (activity.paises[i] === aux[0].id) {
-          flag = true;
+          adicional = true;
         }
       }
-      if (flag === false) {
+      if (adicional === false) {
         setActivity({
           ...activity,
           paises: [...activity.paises, aux[0].id],
@@ -67,7 +67,7 @@ export default function ActivityCreate() {
   async function handleSubmit(e) {
     e.preventDefault();
     var info = error(activity);
-    console.log(activity)
+   // console.log(activity)
     if (Object.keys(info).length !== 0) {
       setValidate(info);
     } else {
@@ -86,7 +86,7 @@ export default function ActivityCreate() {
         console.log(err);
       }
     }
-    /* history.push("/home"); */
+
   }
 
   function cancelar() { //reseteo
@@ -172,8 +172,7 @@ export default function ActivityCreate() {
           </select>
         </form>
       </div>
-      <table key={activity.name} className={style.table}>
-        <tbody>
+       <div  key={activity.name} className={style.table}>
           <label>Paises donde se realiza:</label>
           <input
             type="datalist"
@@ -183,22 +182,20 @@ export default function ActivityCreate() {
             onChange={(e) => onInputChange(e)}
           />
           <datalist id="paises">
-            {countries &&
-              countries.map((e) => <option key={e.id} value={e.name} />)}
+            {countries && countries.map((e) => <option key={e.id} value={e.name} />)}
           </datalist>
           <button onClick={() => agregarPais()}> Agregar Pais</button>
-
-          {activity.paises.map((el) => (
-            <div key={el.id}>
+          {activity.paises.map((el,index) => ( //index es el id que incrementa
+            <div key={index}>
               {" "}
               <h3> {el} </h3>
-              <button key={el.name} value={el} onClick={() => borrarPais(el)}>
+              <button key={index} value={el} onClick={() => borrarPais(el)}>
                 X
               </button>
             </div>
           ))}
-        </tbody>
-      </table>{" "}
+        </div>
+      {" "}
       <br />
       {validate.paises && <h5>{validate.paises}</h5>}
       <button type="submit" onClick={handleSubmit} className={style.btn}>

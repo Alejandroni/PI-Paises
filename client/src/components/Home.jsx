@@ -17,11 +17,10 @@ export default function Home(){
   const dispatch = useDispatch();
   const todosPaises = useSelector((state) => state.paises);
   const todasActividades = useSelector((state) => state.actividades);
-  const [ordenado, setOrden] = useState("");
+ //const [ordenado, setOrden] = useState("");
   const [pagActual, setPagActual] = useState(1); // Mi pagina actual sera 1
-  const [paisesPorPag, setPaisesPorPag] = useState(10); // Cantidad de paises que quiero por pag.
-  const [pageNumberLimit] = useState(5);
-  const [activity, setActivity] = useState(null);//-----------------------no se ha filtrado nada, cambia cuando aplique el filtro
+  const paisesPorPag = 10; // Cantidad de paises que quiero por pag.
+  const pageNumberLimit = 5;
   const indexOfUltimoPais = pagActual * paisesPorPag; // 10----------20
   const indexOfPrimerPais = indexOfUltimoPais - paisesPorPag; // 0---------10
   const paisActual = todosPaises.slice(indexOfPrimerPais, indexOfUltimoPais);
@@ -38,36 +37,40 @@ export default function Home(){
   function handleClick(e) {
     e.preventDefault();
     dispatch(traerPaises());
+   
   }
-
-  function handleFilterContinent(e) {
+ 
+//-------------------------------------------------------------------------------------------------------------------CONTINENTES
+  function handleFilterContinent(e) { 
     dispatch(filterContinentes(e.target.value));
-  }
-
+    setPagActual(1);
+    }
+//-------------------------------------------------------------------------------------------------------------------ACTIVIDADES
   function handleActivity(e) { //filtro de actividades
     if (e.target.value === "All") {
       dispatch(traerPaises());
       setPagActual(1);
     } else {
       dispatch(filtrarActividad(e.target.value));
-      setActivity(e.target.value);
       setPagActual(1);
     }
   }
-
+//------------------------------------------------------------------------------------------------------------------- A-Z
   function handleOrder(e) {
-    e.preventDefault();
+    //e.preventDefault();
+    console.log(e.target.value)
     dispatch(orderByName(e.target.value));
     setPagActual(1);
-    setOrden(`Ordenado ${e.target.value}`);
+   //setOrden(`Ordenado ${e.target.value}`);
   }
-
+//-------------------------------------------------------------------------------------------------------------------POBLACION
   function handleOrderPob(e) {
-    e.preventDefault();
+   // e.preventDefault();
     dispatch(orderByPob(e.target.value));
     setPagActual(1);
-    setOrden(`Ordenado ${e.target.value}`);
+   // setOrden(`Ordenado ${e.target.value}`);
   }
+ // console.log(ordenado)
   return (
     <div >
       <div className={style.Nav}>
@@ -91,7 +94,7 @@ export default function Home(){
               <option value="asc">A-Z</option>
               <option value="desc">Z-A</option>
             </select>
-            <select
+              <select
               className={style.select}
               onChange={(e) => handleOrderPob(e)}
             >
@@ -99,6 +102,7 @@ export default function Home(){
               <option value="may">Mayor</option>
               <option value="men">Menor</option>
             </select>
+           
             <select
               className={style.select}
               onChange={(e) => handleFilterContinent(e)}
