@@ -6,7 +6,7 @@ import {
   filtrarActividad,
   traerActividad,
   orderByName,
-  orderByPob, } from "../actions";
+   orderByPob, } from "../actions";
 import {Link} from "react-router-dom"
 import Card from "./Card"
 import Paginado from "./Paginado";
@@ -14,8 +14,8 @@ import SearchBar from "./SearchBar";
 import style from "./Home.module.css";
 
 export default function Home(){
-  const dispatch = useDispatch();
-  const todosPaises = useSelector((state) => state.paises);
+  const dispatch = useDispatch();// usar la constante para despachar las acciones
+  const todosPaises = useSelector((state) => state.paises); //arreglo del estado que lo trae del reducer
   const todasActividades = useSelector((state) => state.actividades);
  //const [ordenado, setOrden] = useState("");
   const [pagActual, setPagActual] = useState(1); // Mi pagina actual sera 1
@@ -23,7 +23,7 @@ export default function Home(){
   const pageNumberLimit = 5;
   const indexOfUltimoPais = pagActual * paisesPorPag; // 10----------20
   const indexOfPrimerPais = indexOfUltimoPais - paisesPorPag; // 0---------10
-  const paisActual = todosPaises.slice(indexOfPrimerPais, indexOfUltimoPais);
+  const paisActual = todosPaises.slice(indexOfPrimerPais, indexOfUltimoPais); //traer el estado
 
   const paginado = (e) => {
     setPagActual(Number(e.target.id));
@@ -37,6 +37,7 @@ export default function Home(){
   function handleClick(e) {
     e.preventDefault();
     dispatch(traerPaises());
+    setPagActual(1);
    
   }
  
@@ -57,19 +58,17 @@ export default function Home(){
   }
 //------------------------------------------------------------------------------------------------------------------- A-Z
   function handleOrder(e) {
-    //e.preventDefault();
+   
     console.log(e.target.value)
     dispatch(orderByName(e.target.value));
-    setPagActual(1);
-   //setOrden(`Ordenado ${e.target.value}`);
+   
+
   }
 //-------------------------------------------------------------------------------------------------------------------POBLACION
   function handleOrderPob(e) {
-   // e.preventDefault();
-    dispatch(orderByPob(e.target.value));
-    setPagActual(1);
-   // setOrden(`Ordenado ${e.target.value}`);
-  }
+      dispatch(orderByPob(e.target.value));
+   }
+ 
  // console.log(ordenado)
   return (
     <div >
@@ -89,8 +88,9 @@ export default function Home(){
             >
               Borar filtros
             </button>
+           
             <select className={style.select} onChange={(e) => handleOrder(e)}>
-              <option value="">Filtrar por A-Z</option>
+              <option value="All" >Filtrar por A-Z</option>
               <option value="asc">A-Z</option>
               <option value="desc">Z-A</option>
             </select>
@@ -98,7 +98,7 @@ export default function Home(){
               className={style.select}
               onChange={(e) => handleOrderPob(e)}
             >
-              <option value="">PoB</option>
+              <option value="All" >PoB</option>
               <option value="may">Mayor</option>
               <option value="men">Menor</option>
             </select>

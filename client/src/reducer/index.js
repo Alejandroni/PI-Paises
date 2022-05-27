@@ -51,6 +51,7 @@ function rootReducer(state = initialState, action) {
    
 
     case "FILTER_BY_ACTIVITY":
+      
       const prueba = state.allPaises.filter((el) => {
         var y = el.activities.find(
           (x) => x.name.toLowerCase() === action.payload.toLowerCase()
@@ -63,15 +64,17 @@ function rootReducer(state = initialState, action) {
       };
 
       case "ORDER_BY_NAME":
+        
             let sortedArr = [...state.paises]
             sortedArr = sortedArr.sort((a,b) => {
+              
                 if(a.name<b.name){
                     return action.payload === "asc" ? -1 : 1;
                 }
                 if(a.name>b.name){
                     return action.payload ==="asc" ? 1 : -1;
                 }
-                return 1
+              return "Ordenado"
             })
             return{
                 ...state,
@@ -87,16 +90,20 @@ function rootReducer(state = initialState, action) {
                 if(a.population>b.population){
                     return action.payload ==="men" ? 1 : -1;
                 }
-                return 1
+                return "ordenado"
             })
             return{
                 ...state,
                 paises: sortedPob
             }
 
+         
+      
+            
     default:
       return state;
   }
+
 }
 
 export default rootReducer;
