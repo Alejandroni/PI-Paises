@@ -48,16 +48,7 @@ function rootReducer(state = initialState, action) {
         allActividades: action.payload,
       };
 
-    case "GET_ACTIVITY":
-      return {
-        ...state,
-        paises: action.payload,
-      };
-
-    case "POST_ACTIVIDAD":
-      return {
-        ...state,
-      };
+   
 
     case "FILTER_BY_ACTIVITY":
       const prueba = state.allPaises.filter((el) => {
